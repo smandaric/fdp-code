@@ -15,21 +15,21 @@
 
 % ---------Physical values---------------
 h = 1.5e-3; % Droplet Radius in meters
-cMonomer = .1136; % Monomer concentration (fixed)
+cMonomer = .10; % Monomer concentration (fixed) - see lab book pg 41
 cGel = 0;   % Gel concentration (fixed)
-diffRateCalcium = 1e-9;    % in free solution
+diffRateCalcium = 1.1e-9;   % in free solution, according to Robinson(1951 paper)
 %---------------------------------------
 
 
 % ------------Model parameters ----------
 tEnd = 300;   % Simulation end time in seconds
-H = 0.3;      % Relative bead size. Container size is (bead size)/H
+H = 0.2;      % Relative bead size. Container size is (bead size)/H % Factor calculated in lab book pg 41
 m = 1;        % Geometry of problem  0 for slab, 1 for disc, 2 for sphere
 
 Ac = 100;     % Critical conc for monomer diffusion function
 Gc = 100;     % Critical conc for monomer diffusion function
 
-XMESH = 1000; % Mesh size for distance.  values between 200(fastest) and 1000(more stable at edges)
+XMESH = 300; % Mesh size for distance.  values between 200(fastest) and 1000(more stable at edges)
 TMESH = 301;  % Mesh size for time.
 % ----------------------------------------
 
@@ -48,8 +48,8 @@ K = (k*h^2*cr^2)/diffRateCalcium;
 
 
 % ---- Generating Mesh for PDE ----
-t = linspace(0,T,TMESH);
-x = linspace(0,1/H,XMESH); 
+t = linspace(0,T,TMESH);    % Non-dim
+x = linspace(0,1/H,XMESH);  % Non-dim
 % ---------------------------------
 
 % ---- Solving PDE ----
@@ -66,10 +66,6 @@ u = pdepe(m,@diffEq,@initCond,@boundCond,x,t);
  uLabSpace = u*cr;   % Convert concentration to lab space
  tLabSpace = h^2*t/diffRateCalcium;  % Time in lab space
 % ---------------------------------
-
-
-
-
 
 
 % Calclulates monomer diffusion rate. From From Eq(35), Mikkelsen(1995)
@@ -98,10 +94,10 @@ end
 % - Free: p = 0, q = 1
 % - Fixed: p = u-concentration, q = 0
 function [pl,ql,pr,qr] = boundCond(xl,ul,xr,ur,t)   %%% currentfly free-free
-    pl = [0 0 0];
-    ql = [1 1 1];
-    pr = [0 0 0];
-    qr = [1 1 1];
+    pl = [0 0 0]';
+    ql = [1 1 1]';
+    pr = [0 0 0]';
+    qr = [1 1 1]';
 end
 
  end %function
