@@ -9,16 +9,20 @@ if ismember(4, linesToPlot)
     uLabSpace(:,:,4) = uLabSpace(:,:,2) + uLabSpace(:,:,3);
 end
 
-% Set colors for line of the four species
+% Set colors and labels for line of the four species
 lineColors = {'red' 'green' 'blue' 'cyan'};
+lineLabels = {'Ca^2^+', 'monomer', 'gel', 'total alginate'};
 
+plotObj = [];
 
 figure;
 hold on
 
+% Loops through all plot times and all lines to plot
 for tplot = plotTime
     for line = linesToPlot
-        plotObj = plot(xLabSpace, uLabSpace(tplot, :, line),'Color',lineColors{line});
+        % Line color and line name is specified
+        plotObj = [plotObj plot(xLabSpace, uLabSpace(tplot, :, line),'Color',lineColors{line},'DisplayName',lineLabels{line})];
             
             
     end
@@ -27,4 +31,6 @@ end
 title('Gelling profiles')
 ylabel('Concentration [M]')
 xlabel('Distance [m]')
+legend(plotObj(1:length(linesToPlot)))
+
     
