@@ -3,7 +3,7 @@
 
 
 % load text file with interesting samples
-fileNames = importdata('Code/gel-results/nov_5.txt');
+fileNames = importdata('Code\gel-results\nov_5.txt');
 sampleType = 'optical'; % this must be fixed for confocal results
 vidFPS = 1;
 
