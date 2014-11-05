@@ -3,15 +3,17 @@
 
 
 % load text file with interesting samples
-fileNames = importdata('Database-management\oct_24.txt');
+fileNames = importdata('Code/gel-results/nov_5.txt');
 sampleType = 'optical'; % this must be fixed for confocal results
 vidFPS = 1;
 
 % load existing data or create header if no existing database
 
-if exist('Database-management\data.mat','file')
-    load('Database-management\data.mat')
+if exist('Code\gel-results\data.mat','file')
+    fprintf(1,'Appending to existing database\n')
+    load('Code\gel-results\data.mat')
 else
+    fprintf(1,'No database found. Creating new\n')
     data = {'Sample Name', 'Sample Type', 'Time', 'Distance', 'Slope', 'Interscept'};
 end
 
@@ -51,6 +53,6 @@ for i = 1:length(fileNames)
 end
 
 
-save('Database-management\data.mat', 'data')
+save('Code\gel-results\data.mat', 'data')
 
 
