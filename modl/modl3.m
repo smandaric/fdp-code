@@ -17,7 +17,7 @@
 h = 1.5e-3; % Droplet Radius in meters
 cMonomer = .10; % Monomer concentration (fixed) - see lab book pg 41
 cGel = 0;   % Gel concentration (fixed)
-diffRateCalcium = 1.1e-9;   % in free solution, according to Robinson(1951 paper)
+diffRateCalcium = 1e-9;   % in free solution same as before because of reduction in Braschler
 %---------------------------------------
 
 
@@ -29,7 +29,7 @@ m = 1;        % Geometry of problem  0 for slab, 1 for disc, 2 for sphere
 Ac = 100;     % Critical conc for monomer diffusion function
 Gc = 100;     % Critical conc for monomer diffusion function
 
-XMESH = 300; % Mesh size for distance.  values between 200(fastest) and 1000(more stable at edges)
+XMESH = 5000; % Mesh size for distance.  values between 200(fastest) and 1000(more stable at edges)
 TMESH = 301;  % Mesh size for time.
 % ----------------------------------------
 
