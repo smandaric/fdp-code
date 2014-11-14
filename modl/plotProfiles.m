@@ -27,11 +27,11 @@ end
 
 % Set colors and labels for line of the four species
 lineColors = {'red' 'green' 'blue' 'cyan'};
-lineLabels = {'Ca^2^+', 'monomer', 'gel', 'total alginate'};
+lineLabels = {'Ca^2^+', 'Monomer', 'Gel', 'Total alginate'};
 
 plotObj = [];
 
-figure;
+
 hold on
 
 % Loops through all plot times and all lines to plot
@@ -44,7 +44,7 @@ for tplot = plotTime
     end
 end
 
-title('Gelling profiles')
+title('Concentration Profile')
 ylabel('Concentration [M]')
 xlabel('Distance [m]')
 legend(plotObj(1:length(linesToPlot)))
