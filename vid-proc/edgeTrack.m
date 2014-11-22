@@ -3,9 +3,9 @@ function edgeTrack
 % Input is a greyscale video.
 
 % Input parameters
-videoName = '141024-7';
+videoName = 'examplevid';
 tresh = .05; % treshold for edge detection 
-nFramesToAnalyze = 50; % how many frames you want to analyse
+nFramesToAnalyze = 25; % how many frames you want to analyse
 
 % Generating path for input and output. Check that folders are ok
 videoInputPath = strcat('D:\vidproc\proc\',videoName,'.avi');
@@ -69,7 +69,7 @@ ellipse = drawEllipse(a,b,z,alpha,H,W);
 fused(:,:,:,1) = uint8(imfuse(img(:,:,1,frame(1)),ellipse));
 
 
-
+BWthinSave = {}; %%%%%%%%
 
 for n = 2:nFrames
     fprintf(1,'Processing frame %d of %d\n',frame(n), frame(end));
@@ -88,6 +88,8 @@ for n = 2:nFrames
     BWthin = bwmorph(BWfiltered,'thin'); % thin borders
     BWthin = bwareaopen(BWthin, 40);
     [col, row] = find(BWthin);
+    
+    BWthinSave = [BWthinSave, BWthin]; %%%%%%%%%%
     
     if length(col) > 1000                      % to prevent memory overflow
         q = floor(linspace(1,length(col),1000));
@@ -129,7 +131,7 @@ for n = 2:nFrames
     fused(:,:,:,n) = uint8(fusedTEMP); %%%5 add for fist one as well
 end
 
-save(outputPath,'fused', 'aMoving','bMoving', 'zMoving', 'alphaMoving', 'frame', 'vidFPS')   % removed save of img to save room
+save(outputPath,'fused', 'aMoving','bMoving', 'zMoving', 'alphaMoving', 'frame', 'vidFPS','img','BW','BWthinSave')   % removed save of img to save room
 
 % Plot edge position
 [rDist, t, ~] = plotCalc(aMoving, bMoving, frame, vidFPS, 'optical');

@@ -84,4 +84,14 @@ title('Linear gelling velocities - square root conc')
 xlabel('Square root Ca^2^+ conc')
 ylabel('speed m/s')
 
+close all
+% This one is used for paper
+figure
+err_handle = errorbar(cca, group_mean, group_std);
+title('Linear gelling velocities')
+xlabel('Ca^2^+ [mM]')
+ylabel('Speed [m/s]')
+err_handle.LineStyle = 'none';
+err_handle.Marker = '*';
+set(gca,'XTick', [0:100:1200]);
 

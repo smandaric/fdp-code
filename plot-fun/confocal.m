@@ -8,7 +8,7 @@ samples = {
     '141003-5', 1;
     '141003-6', 1;
     '141003-8', 1;
-    '141009-1', 2;
+    %'141009-1', 2;
     '141009-2', 2;
     '141009-3', 2;
     };
@@ -38,8 +38,11 @@ for i = 2:length(samples)
 end
 
 title('Gelling front positions')
-xlabel('Times [s]')
+xlabel('Time [s]')
 ylabel('Distance [m]')
+
+ax = gca;
+ax.YLim = [0 14e-4];
 
 legend(handles([2 5]),names,'Location','SouthEast')
 hold off

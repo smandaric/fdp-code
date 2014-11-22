@@ -22,14 +22,14 @@ diffRateCalcium = 1e-9;   % in free solution same as before because of reduction
 
 
 % ------------Model parameters ----------
-tEnd = 300;   % Simulation end time in seconds
+tEnd = 1200;   % Simulation end time in seconds
 H = 0.2;      % Relative bead size. Container size is (bead size)/H % Factor calculated in lab book pg 41
 m = 1;        % Geometry of problem  0 for slab, 1 for disc, 2 for sphere
 
 Ac = 100;     % Critical conc for monomer diffusion function
 Gc = 100;     % Critical conc for monomer diffusion function
 
-XMESH = 5000; % Mesh size for distance.  values between 200(fastest) and 1000(more stable at edges)
+XMESH = 1000; % Mesh size for distance.  values between 200(fastest) and 1000(more stable at edges)
 TMESH = 301;  % Mesh size for time.
 % ----------------------------------------
 

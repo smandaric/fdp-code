@@ -26,8 +26,8 @@ samples = {
     };
     
 names = {'1000 mM', '750 mM', '500 mM', '250 mM', '100 mM', '50 mM'};
-%colors = {[215,25,28]/255 [253,174,97]/255 [171,221,164]/255 [43,131,186]/255};
-%colors = {'red', 'green', 'blue', 'yellow'};
+
+colors = linspecer(6);
 handles = [0];
 
 hold on
@@ -41,18 +41,19 @@ for i = 2:length(samples)
     
     plot_handle = plot(data{index,3},data{index,4},'-');
     
-    %set(plot_handle, 'Color', colors{group});
-    set(plot_handle, 'LineWidth', 3);
+    set(plot_handle, 'Color', colors(group,:));
+    set(plot_handle, 'LineWidth', 2);
     
     handles = [handles, plot_handle];
     
 end
 
 title('Gelling front positions')
-xlabel('Times [s]')
+xlabel('Time [s]')
 ylabel('Distance [m]')
 
 legend(handles(2:3:end),names,'Location','SouthEast')
 hold off
 
+set(gcf, 'Position', [150 150 640 480])
 

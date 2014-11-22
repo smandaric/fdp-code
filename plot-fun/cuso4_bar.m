@@ -52,9 +52,9 @@ barwitherr(std,means)
 set(gca,'XTick',[1:3],'XTickLabelMode','manual','XTickLabel',names)
 legend('CaCl_2','CuSO_4')
 
-title('Gelling rates for different gelling agents')
+title('Gelling rate dependence on gelling ions')
 xlabel('Gelling agent concentration')
-ylabel('Gelling front velocity')
+ylabel('Gelling front velocity [m/s]')
 %set(gca,'XTickLabelRotation',90) % add with new matlab
-
+set(gcf, 'Position', [150 150 640 480])
 
